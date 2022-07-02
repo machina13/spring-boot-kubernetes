@@ -10,14 +10,15 @@ pipeline {
 	stage('Check Quality Gate') {
             steps {
                 echo 'Checking quality gate...'
-                script {
-                    timeout(time: 1, unit: 'HOURS') {
-                        def qg = waitForQualityGate(webhookSecretId: 'eb402dfd87ab83bfa88e9047d9c7add47053da27' )
-                        if (qg.status != 'OK') {
-                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
-        	                }
-                	    }
-                	}
+		waitForQualityGate abortPipeline: true
+                //script {
+                  //  timeout(time: 1, unit: 'HOURS') {
+                        //def qg = waitForQualityGate(webhookSecretId: 'eb402dfd87ab83bfa88e9047d9c7add47053da27' )
+                        //if (qg.status != 'OK') {
+                        //    error "Pipeline aborted due to quality gate failure: ${qg.status}"
+        	    //            }
+               // 	    }
+                //	}
 		}
 	}
 
