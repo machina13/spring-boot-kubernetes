@@ -12,7 +12,7 @@ pipeline {
                 echo 'Checking quality gate...'
                 script {
                     timeout(time: 1, unit: 'HOURS') {
-                        def qg = waitForQualityGate()
+                        def qg = waitForQualityGate(webhookSecretId: 'eb402dfd87ab83bfa88e9047d9c7add47053da27' )
                         if (qg.status != 'OK') {
                             error "Pipeline aborted due to quality gate failure: ${qg.status}"
         	                }
