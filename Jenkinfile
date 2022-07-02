@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'chmod +x mvnw'
                 sh './mvnw -B verify sonar:sonar -Dsonar.login=eb402dfd87ab83bfa88e9047d9c7add47053da27 -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=machina13_spring-boot-kubernetes -Dsonar.organization=machina13'
-		echo '${qg.status}'
+		echo '$hellofriend {qg.status}'
             }
         }
 //	stage("Quality Gate") {
