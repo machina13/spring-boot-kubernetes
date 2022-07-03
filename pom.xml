@@ -17,10 +17,8 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Hoxton.SR4</spring-cloud.version>
+		<sonar.host.url>http://sonarcloud.io</sonar.host.url>
 	</properties>
-        <properties>
-                <sonar.host.url>http://sonarcloud.io</sonar.host.url>
-        </properties>
 
 	<dependencies>
 		<dependency>
