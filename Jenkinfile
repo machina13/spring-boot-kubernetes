@@ -15,7 +15,7 @@ pipeline {
 			script  {
 				//waitForQualityGate abortPipeline: true
 				def qg = waitForQualityGate()
-        		      	if (qg.status = 'OK') {
+        		      	if (qg.status == 'OK') {
 	                		      error "Pipeline aborted due to quality gate failure: ${waitForQualityGate.status}"
 					}
 				}
