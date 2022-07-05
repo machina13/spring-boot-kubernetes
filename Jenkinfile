@@ -1,5 +1,8 @@
 pipeline {
-    agent any 
+    agent any
+    enviroment {
+	SCA = '/var/jenkins/DependencyCheck/dependency-check/bin/dependency-check.sh'
+		 }	 
     stages {
 //        stage('SAST') {
 //            steps {
@@ -18,13 +21,7 @@ pipeline {
 //	}
 	stage ('OWASP Dependency-Check Vulnerabilities') {  
 		steps { 
-	            dependencyCheck additionalArguments: ''' 
-                    -o "./" 
-                    -s "./"
-                    -f "ALL" 
-                    --prettyPrint''', odcInstallation: 'OWASP-DC'
-
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml' 
+		sh "$SCA --project 'tarea4' --scan '${WORKSPACE}'"
 		}  
 	}  
     }
