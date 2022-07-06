@@ -7,8 +7,8 @@ pipeline {
         stage('SAST') {
             steps {
 			withSonarQubeEnv('sonar') {
-				sh 'set +x; chmod 777 mvnw'
-		                sh './mvnw clean package'
+	//			sh 'set +x; chmod 777 mvnw'
+	//	                sh './mvnw clean package'
 				sh './mvnw org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.login=eb402dfd87ab83bfa88e9047d9c7add47053da27 -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=machina13_spring-boot-kubernetes -Dsonar.organization=machina13'
 				}
         	    	}	
