@@ -23,7 +23,7 @@ pipeline {
 	stage('Build') {
             steps {
                 sh 'set +x; chmod 777 mvnw'
-                sh './mvnw org.owasp:dependency-check-maven:6.0.0:purge'
+                sh './mvnw clean package'
             }
         }
 	stage ('OWASP Dependency-Check Vulnerabilities') {  
