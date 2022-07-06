@@ -13,20 +13,20 @@ pipeline {
 				}
         	    	}	
 	        }	
-	stage('Check Quality Gate') {
-          steps {
+//	stage('Check Quality Gate') {
+//          steps {
 //		script {
-		    timeout(time: 60, unit: 'MINUTES') {
+//		    timeout(time: 60, unit: 'MINUTES') {
 //				waitForQualityGate abortPipeline: true
-			def qg = waitForQualityGate()
-        	      	if (qg.status != 'OK') {
-	                      error "Pipeline aborted due to quality gate failure: ${waitForQualityGate.status}"
-					}
-				}
-		//	}
+//			def qg = waitForQualityGate()
+ //       	      	if (qg.status != 'OK') {
+//	                      error "Pipeline aborted due to quality gate failure: ${waitForQualityGate.status}"
+//					}
+//				}
+//			}
 
-		}
-	}
+//		}
+//	}
 //	stage('Build') {
 //            steps {
 //                sh 'set +x; chmod 777 mvnw'
