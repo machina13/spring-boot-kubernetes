@@ -28,12 +28,14 @@ pipeline {
 
 		}
 	}
-//	stage('Build') {
-//            steps {
-//                sh 'set +x; chmod 777 mvnw'
-//                sh './mvnw clean package'
-//            }
-//        }
+	stage('Build') {
+            steps {
+		sh 'keytool -importcert -file '${WORKSPACE}'/nvd.nist.gov.cer -alias nvd -keystore $JAVA_HOME/jre/lib/security/cacerts (password = 'changeit')'
+		sh 'export MAVEN_OPTS="-Djavax.net.ssl.keyStore=$JAVA_HOME/jre/lib/security/cacert -Djavax.net.ssl.keyStorePassword=changeit -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Ddownloader.quick.query.timestamp=false"'
+                sh 'set +x; chmod 777 mvnw'
+                sh './mvnw clean package'
+            }
+        }
 	stage ('OWASP Dependency-Check Vulnerabilities') {  
 		steps { 
 		sh "$SCA --project 'tarea4' --failOnCVSS 7 --scan '${WORKSPACE}'/target/*.jar"
