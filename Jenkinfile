@@ -27,15 +27,15 @@ pipeline {
 
 		}
 	}
-	stage('Build') {
-            steps {
-                sh 'set +x; chmod 777 mvnw'
-                sh './mvnw clean package'
-            }
-        }
+//	stage('Build') {
+//            steps {
+//                sh 'set +x; chmod 777 mvnw'
+//                sh './mvnw clean package'
+//            }
+//        }
 	stage ('OWASP Dependency-Check Vulnerabilities') {  
 		steps { 
-		sh "$SCA --project 'tarea4' --failOnCVSS 7 --scan '${WORKSPACE}'/target/*.jar  -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacert"
+		sh "$SCA --project 'tarea4' --failOnCVSS 7 --scan '${WORKSPACE}'/target/*.jar -l dependency.log"
 
 		}  
 	}  
