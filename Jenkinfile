@@ -16,7 +16,7 @@ pipeline {
           steps {
 		script {
 		    timeout(time: 60, unit: 'MINUTES') {
-				waitForQualityGate abortPipeline: true
+//				waitForQualityGate abortPipeline: true
 			def qg = waitForQualityGate()
         	      	if (qg.status != 'OK') {
 	                      error "Pipeline aborted due to quality gate failure: ${waitForQualityGate.status}"
@@ -26,7 +26,7 @@ pipeline {
 
 		}
 	}
-	stage ('OWASP Dependency-Check Vulnerabilities') {  
+	stage ('Dependency-Check') {  
 		steps { 
 		sh "$SCA --project 'tarea4' --failOnCVSS 7 --scan '${WORKSPACE}'/target/*.jar -o dependency-check-report.html"
 
