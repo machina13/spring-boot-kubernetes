@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    options {
-    timeout(time: 2, unit: 'MINUTES')
-    retry(2)
-}
     environment {
 	SCA = '/var/jenkins_home/DependencyCheck/dependency-check/bin/dependency-check.sh'
 		 }	 
