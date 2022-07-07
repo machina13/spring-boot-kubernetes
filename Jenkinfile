@@ -11,16 +11,14 @@ pipeline {
 				sh './mvnw org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.login=eb402dfd87ab83bfa88e9047d9c7add47053da27 -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=machina13_spring-boot-kubernetes -Dsonar.organization=machina13'
 				}
         	    	}	
-	        }	
+	        }
 	stage('Check Quality Gate') {
-           steps {
+            steps {
 		    timeout(time: 60, unit: 'MINUTES') {
-				script {
-				waitForQualityGate abortPipeline: true
-				}
+		        waitForQualityGate abortPipeline: true
 			}
 		}
-	}
+	}	
 	//stage ('Dependency-Check') {  
 	//	steps { 
 	//	sh "$SCA --project 'tarea4' --failOnCVSS 7 --scan '${WORKSPACE}'/target/*.jar -o dependency-check-report.html"
