@@ -35,7 +35,7 @@ pipeline {
         //}
 	stage ('OWASP Dependency-Check Vulnerabilities') {  
 		steps { 
-		sh "$SCA --project 'tarea4' --failOnCVSS 7 --scan '${WORKSPACE}'/target/*.jar -o dependency-check-report.html"
+		sh "$SCA --project 'tarea4' --failOnCVSS 7 --scan '${WORKSPACE}'/target/*.jar -o dependency-check-report.html --format PDF"
 
 		}  
 	}  
