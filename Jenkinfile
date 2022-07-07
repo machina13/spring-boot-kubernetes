@@ -20,12 +20,12 @@ pipeline {
 		        waitForQualityGate abortPipeline: true
 		}
 	}	
-	//stage ('Dependency-Check') {  
-	//	steps { 
-	//	sh "$SCA --project 'tarea4' --failOnCVSS 7 --scan '${WORKSPACE}'/target/*.jar -o dependency-check-report.html"
+	stage ('Dependency-Check') {  
+		steps { 
+		sh "$SCA --project 'tarea4' --failOnCVSS 7 --scan '${WORKSPACE}'/target/*.jar -o dependency-check-report.html"
 
-	//	}  
-	//}  
+		}  
+	}  
     }
 }
 
